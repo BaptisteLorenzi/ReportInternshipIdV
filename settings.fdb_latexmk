@@ -1,0 +1,16 @@
+# Fdb version 3
+["xdvipdfmx"] 0 "settings.xdv" "settings.pdf" "settings" 0
+  "settings.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "settings.pdf"
+["xelatex"] 1693316222 "/media/baptistel/Seagate Basic/ReportInternshipIdV/settings.tex" "settings.xdv" "settings" 1693316222
+  "/etc/texmf/web2c/texmf.cnf" 1690205337 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/media/baptistel/Seagate Basic/ReportInternshipIdV/settings.tex" 1693316222 322 76fbf2c5292cbeeb92261efe4cf63af8 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
+  "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1692714882 5133927 d7596226c74de651263229dd55b96a1c ""
+  "settings.aux" 1693316222 32 3985256e7290058c681f74d7a3565a19 ""
+  "settings.tex" 1693316222 322 76fbf2c5292cbeeb92261efe4cf63af8 ""
+  (generated)
+  "settings.log"
+  "settings.xdv"

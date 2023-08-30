@@ -1,4 +1,69 @@
-\section{Introduction}
-\label{sec:introduction}
+\section{Introduction}\label{sec:introduction}
 
-Text sample
+During my internship in Olivier Marre's team at l'Institut de la Vision, I am
+focusing on computational modeling of the retina. Olivier Marre's team is an
+interdisciplinary laboratory, hosting four professors and a dozen of interns,
+Ph.D. students and post-docs, working hand in hand to advance research
+on the retina. They all have various backgrounds mainly from biology,
+theoretical physics and engineering. In the context of this project, I've been
+working
+closely with Samuele Virgili, a third-year Ph.D. student, whose previous and
+current projects all focus on the modeling of retinal ganglion cells.
+
+% Context
+The ability of the visual system to process complex stimuli on different
+temporal and spatial scales is remarkable. % Of which specie? 
+Natural environments are such complex stimuli, and extracting the relevant
+features at all times is crucial for many species.
+% Here I already insist on two notions: natural stim and temporal complexity
+
+Different neurons at different stages of perception are sensitive to specific
+features of the visual stimulus. From a theoretical point of view, the retina
+doesn't only play the role of a receptor for the visual system. It has been
+proven to be the first layer of feature-sensitive
+neurons \cite{gollisch_eye_2010}.
+
+Both the accessibility and apparent complexity	of the retina makes it a
+perfect candidate for the study of the front-end of visual processing
+\citep{gollisch_eye_2010}. In the mouse, the retina is composed of more
+than 30 parallel feature channels, embodied by ganglion cell types. Through
+their axons, the optic nerve, they provide information to numerous visual areas
+in the brain.
+A few channels are active in the encoding of basic features including luminance
+changes and motion, that are only combined in more downstream area. Other
+channels however are known to play a role in the extraction of specific
+features of natural scene that are relevant  to behaviour.
+% This example focusing on behaviour is not the best one here...
+
+Still, we currently lack an explanation of the features extracted by other
+channels. One of the historical reasons for this is that synthetic stimuli used
+to study retinal responses are not complex enough to activate these channels.
+Hence, they cannot uncover critical response properties encountered in natural
+environments. % Please rewrite this sentence
+
+% Here add an example of how synthetic stimuli have been used to study adaptation
+
+In practice, Karamanlis and colleagues \citep{kim_nonlinear_2020} have
+probed a larger complexity in retinal spatial non-linearities thanks to stimuli
+capturing the statistics of natural environments.
+As those non-linearities cannot be captured by Linear-Nonlinear (LN) models,
+convolutional neural networks (CNNs) have become the state-of-the-art approach
+for predictive modelling of visual processing, not on;y in the retina but also
+in higher visual areas. % Now briefly explain one or two studies that used CNNs to study adaptation
+
+\textbf{Insight on methods}
+Here, we combined the power of CNN-based modelling with large-scale
+mutli-electrode recordings from RGCs to investigate the mechanisms of fast
+adaptation in the retina under natural stimulus conditions. To this end, we
+recorded RGC responses to flashed images paired together. Each pair is composed
+of a synthetic adaptation image followed by a natural image. We were able to
+identify different trend in the responses of RGCs to natural images, depending
+on the adaptation image.
+
+To investigate the diversity of this adaptation process and its implementation,
+we paired deep convolutional models with more traditional modeling. We trained
+a CNN model on RGC responses to a movie of flashed images. After training, we
+study how the how this model generalized to images after being adapted with
+patterns it wasn't trained to. By tweaking part of the model at the inference
+level, We hope to show that temporal mechanisms such as gain-control play a
+major role in the fast adaptation of RGCs in a natural context.

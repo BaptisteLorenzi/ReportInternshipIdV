@@ -1,45 +1,22 @@
-% Use only LaTeX2e, calling the article.cls class and 12-point type.
-
-\documentclass[12pt]{article}
-
-% Users of the {thebibliography} environment or BibTeX should use the
-% scicite.sty package, downloadable from *Science* at
-% http://www.sciencemag.org/authors/preparing-manuscripts-using-latex 
-% This package should properly format in-text
-% reference calls and reference-list numbers.
-
-\usepackage{scicite}
-
-\usepackage{times}
-
-% The preamble here sets up a lot of new/revised commands and
-% environments.  It's annoying, but please do *not* try to strip these
-% out into a separate .sty file (which could lead to the loss of some
-% information when we convert the file to other formats).  Instead, keep
-% them in the preamble of your main LaTeX source file.
-
+\documentclass[12pt]{article}\input{settings.tex}
 
 % The following parameters seem to provide a reasonable page setup.
 
-\topmargin 0.0cm
-\oddsidemargin 0.2cm
-\textwidth 16cm 
-\textheight 21cm
-\footskip 1.0cm
+\topmargin0.0cm
+\oddsidemargin0.2cm
+\textwidth16cm
+\textheight21cm
+\footskip1.0cm
 
-
-%The next command sets up an environment for the abstract to your paper.
+%The next command sets up an environment for the abstract of your paper.
 
 \newenvironment{sciabstract}{%
-\begin{quote} \bf}
-{\end{quote}}
-
-
+    \begin{quote} \bf}
+        {\end{quote}}
 
 % Include your paper's title here
 
-\title{Rapid dynamics in the retina} 
-
+\title{Rapid dynamics in the retina}
 
 % Place the author information here.  Please hand-code the contact
 % information and notecalls; do *not* use \footnote commands.  Let the
@@ -47,23 +24,18 @@
 % as shown.  We would also prefer that you don't change the type-size
 % settings shown here.
 
-\author
-{Baptiste Lorenzi\\
-\\
-\normalsize{CentraleSupélec, Unversité Paris Saclay, Institut de la Vision}\\}
-
+\author{Baptiste Lorenzi\\
+    \\
+    \normalsize{CentraleSupélec, Unversité Paris Saclay, Institut de la
+        Vision}\\}
 
 % Include the date command, but leave its argument blank.
 
 \date{}
 
-
-
 %%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%
 
-
-
-\begin{document} 
+\begin{document}
 
 % Double-space the manuscript.
 
@@ -71,12 +43,16 @@
 
 % Make the title.
 
-\maketitle 
+\maketitle
 
 \input{sections/abstract}
 \input{sections/introduction}
-\input{sections/results}
+\input{sections/background}
 \input{sections/methods}
+
+\input{sections/results}
+
+\input{sections/conclusion}
 
 % Your references go at the end of the main text, and before the
 % figures.  For this document we've used BibTeX, the .bib file
@@ -87,49 +63,20 @@
 %BibTeX users: After compilation, comment out the following two lines and paste in
 % the generated .bbl file. 
 
-\bibliography{scibib}
+\bibliography{biblio}
 
-\bibliographystyle{Science}
-
-
-
-
+% \bibliographystyle{Science}
 
 \section*{Acknowledgments}
-Include acknowledgments of funding, any patents pending, where raw data for the paper are deposited, etc.
+Include acknowledgments of funding, any patents pending, where raw data for the
+paper are deposited, etc.
 
 %Here you should list the contents of your Supplementary Materials -- below is an example. 
 %You should include a list of Supplementary figures, Tables, and any references that appear only in the SM. 
 %Note that the reference numbering continues from the main text to the SM.
 % In the example below, Refs. 4-10 were cited only in the SM.     
 \section*{Supplementary materials}
-Materials and Methods\\
-Supplementary Text\\
-Figs. S1 to S3\\
-Tables S1 to S4\\
-References \textit{(4-10)}
-
 
 \clearpage
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
