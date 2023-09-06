@@ -1,16 +1,47 @@
 \section{Methods}\label{sec:methods}
 
-\textbf{Experimental design.}
-Experimental design is at the border of this work since I don't realize any
-experiments myself. I will try here to give as few details as necessary for the
-understanding of the rest of the work.
+\textbf{Retinal recordings.}
+Since I don't realize any experiments myself, I will try here to give as few
+details
+as necessary for the understanding of the rest of the work. Still, experimental
+recording of the retina is a very interesting topic and the reader can look
+here for more information. % Useful ?
 The laboratory has access to three experimental rooms that enable
 state-of-the-art experimentation
-on the retina.
+on the retina.	For this project, we record the activity of retinal ganglion
+cells
+using a multi-electrode array. The retina is placed on a ???
+% TO COMPLETE
+
+% A part to complete
+
+\textbf{Stimuli design.}
+The stimuli used in this project are composed of two images, one synthetic
+adaptation image followed by a natural image. Adaptation images are taken from
+a pull of three different patterns: a grey screen used as control, a
+checkerboard of X*X checks and the same checkerboard with inverted colors (Fig.
+TO ADD). Natural images are taken from ADD REFERENCE. XXXX images were used for
+training the CNN, 10 were used to test the CNN and among them, 3 were used to
+record an estimation of the LSTA of each cell.
+Adaptation and natural images are always paired together to form a single
+stimulus pair, also referenced as a clip. Each frame is XXXxXXX pixels wide and
+each clip is 2*400ms long.
+
+% Give details about how the images are built for the camera?
+
+The training set is composed of XXXX clips, each composed of the grey
+adaptation image followed by a natural image. The test set is composed of 30
+clips, each repeated 30 times. The test clips are composed 10 different natural
+images preceded by each adaptation (3 different clips for each natural image).
+The dataset used to record LSTA is composed of 9 different clips repeated 1000
+times. Each clip is composed of one of the three selected natural images
+preceded by one of the adaptation patterns.
+
+We first used 4 different natural images while computing the LSTA of each cell,
+each 12 different clips being repeated 12 times. We found that the estimation of the LSTA was too unstable with only 750 repetitions. In following experiments we excluded the image that yielded the least amount of stable estimations of LSTA (20\% average success rate as compared to 42\% average success rate for the other three images). We then used 3 different natural images while computing the LSTA of each cell, each 9 different clips being repeated 1000 times. We found that the estimation of the LSTA was stable with 1000 repetitions.
 
 \tab\textbf{Data processing.}
-After an experiments is done, we have to retrieve multi-electrode array
-experimental data, including semi-automatized spike sorting and cell typing.
+Multi-electrode array experimental data, including semi-automatized spike sorting and cell typing.
 This process can take up to an entire day for a single experiment. I am also
 able to share my programming skill to help and improve the data pipeline of the
 laboratory. This part of my project includes design of experimental stimulus,
@@ -47,7 +78,7 @@ TO FIND~\cite{}).
         mechanism
         that scale its output depending on past events. They all converge into
         on
-        bipolar cell (forming its own receptive field) of which output is also
+        bipolar cell (forming its receptive field) of which output is also
         modeled
         using a non-linear function.}\label{fig:LNLN}
 \end{figure}

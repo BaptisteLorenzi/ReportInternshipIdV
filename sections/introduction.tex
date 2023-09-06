@@ -17,22 +17,22 @@ Natural environments are such complex stimuli, and extracting the relevant
 features at all times is crucial for many species.
 % Here I already insist on two notions: natural stim and temporal complexity
 
-Different neurons at different stages of perception are sensitive to specific
-features of the visual stimulus. From a theoretical point of view, the retina
-doesn't only play the role of a receptor for the visual system. It has been
-proven to be the first layer of feature-sensitive
-neurons \cite{gollisch_eye_2010}.
+% Different neurons at different stages of perception are sensitive to specific
+% features of the visual stimulus. From a theoretical point of view, the retina
+% doesn't only play the role of a receptor for the visual system. It has been
+% proven to be the first layer of feature-sensitive
+% neurons \cite{gollisch_eye_2010}.
 
-Both the accessibility and apparent complexity	of the retina makes it a
+Both the accessibility and apparent complexity	of the retina make it a
 perfect candidate for the study of the front-end of visual processing
 \citep{gollisch_eye_2010}. In the mouse, the retina is composed of more
 than 30 parallel feature channels, embodied by ganglion cell types. Through
 their axons, the optic nerve, they provide information to numerous visual areas
 in the brain.
 A few channels are active in the encoding of basic features including luminance
-changes and motion, that are only combined in more downstream area. Other
+changes and motion, that are only combined in more downstream areas. Other
 channels however are known to play a role in the extraction of specific
-features of natural scene that are relevant  to behaviour.
+features of natural scenes.
 % This example focusing on behaviour is not the best one here...
 
 Still, we currently lack an explanation of the features extracted by other
@@ -48,22 +48,24 @@ probed a larger complexity in retinal spatial non-linearities thanks to stimuli
 capturing the statistics of natural environments.
 As those non-linearities cannot be captured by Linear-Nonlinear (LN) models,
 convolutional neural networks (CNNs) have become the state-of-the-art approach
-for predictive modelling of visual processing, not on;y in the retina but also
+for predictive modelling of visual processing, not only in the retina but also
 in higher visual areas. % Now briefly explain one or two studies that used CNNs to study adaptation
 
 \textbf{Insight on methods}
-Here, we combined the power of CNN-based modelling with large-scale
+Here, we combined the power of CNN-based modeling with large-scale
 mutli-electrode recordings from RGCs to investigate the mechanisms of fast
 adaptation in the retina under natural stimulus conditions. To this end, we
 recorded RGC responses to flashed images paired together. Each pair is composed
 of a synthetic adaptation image followed by a natural image. We were able to
-identify different trend in the responses of RGCs to natural images, depending
+identify different trends in the responses of RGCs to natural images, depending
 on the adaptation image.
+
+% Need to introduce LSTA
 
 To investigate the diversity of this adaptation process and its implementation,
 we paired deep convolutional models with more traditional modeling. We trained
 a CNN model on RGC responses to a movie of flashed images. After training, we
-study how the how this model generalized to images after being adapted with
+study how this model generalized to images after being adapted with
 patterns it wasn't trained to. By tweaking part of the model at the inference
 level, We hope to show that temporal mechanisms such as gain-control play a
 major role in the fast adaptation of RGCs in a natural context.
