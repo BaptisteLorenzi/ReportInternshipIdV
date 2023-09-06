@@ -31,22 +31,110 @@ each clip is 2*400ms long.
 
 The training set is composed of XXXX clips, each composed of the grey
 adaptation image followed by a natural image. The test set is composed of 30
-clips, each repeated 30 times. The test clips are composed 10 different natural
+clips, each repeated 30 times. The test clips are composed of 10 different
+natural
 images preceded by each adaptation (3 different clips for each natural image).
 The dataset used to record LSTA is composed of 9 different clips repeated 1000
 times. Each clip is composed of one of the three selected natural images
 preceded by one of the adaptation patterns.
 
 We first used 4 different natural images while computing the LSTA of each cell,
-each 12 different clips being repeated 12 times. We found that the estimation of the LSTA was too unstable with only 750 repetitions. In following experiments we excluded the image that yielded the least amount of stable estimations of LSTA (20\% average success rate as compared to 42\% average success rate for the other three images). We then used 3 different natural images while computing the LSTA of each cell, each 9 different clips being repeated 1000 times. We found that the estimation of the LSTA was stable with 1000 repetitions.
+each 12 different clips being repeated 12 times. We found that the estimation
+of the LSTA was too unstable with only 750 repetitions. In following
+experiments we excluded the image that yielded the least amount of stable
+estimations of LSTA (20\% average success rate as compared to 42\% average
+success rate for the other three images). We then used 3 different natural
+images while computing the LSTA of each cell, each 9 different clips being
+repeated 1000 times. We found that the estimation of the LSTA was stable with
+1000 repetitions.
 
-\tab\textbf{Data processing.}
-Multi-electrode array experimental data, including semi-automatized spike sorting and cell typing.
-This process can take up to an entire day for a single experiment. I am also
-able to share my programming skill to help and improve the data pipeline of the
-laboratory. This part of my project includes design of experimental stimulus,
-trustworthy sanity checks and high quality data visualization.
+\textbf{Data processing.}
+Multi-electrode array experimental data takes the shape of a collection of
+temporal electrical signals tiling the recorded area.
+In most scenarios, including here, these signals are sorted into different cell
+signals using a semi-automatic algorithm. This algorithm is based on the shape
+of the electrical spikes as well as their spatial location. It is
+quite messy due to the low signal-to-noise ratio in the data and each
+experiment
+needs to have its sorting corrected by hand. This process can take up to an
+entire day for a single experiment. I used spiking-circus for semi-automatic
+spike sorting and the UI phy for handmade corrections. [CITE]
+It is important to note that even though the retina is an easier organ than
+most to record clean spike signals from, the data is still very noisy and the
+sorting process is not perfect. Hence, when validating hypotheses, cells are
+usually rated by their reliability.
 
+% Checkeckerboards and RF
+After spike sorting, we analyze the recording from standard stimuli to
+characterize each
+ganglion cell receptive field. To this end, we display a random binary
+checkerboard for approximately 1 h at 30 Hz. Check size is 42\microns. A
+ganglion cell receptive is computed as its spike trigger average (STA), for
+this checkerboard stimulus. The STA of a cell can also be described as the
+stimulus that triggers the most spikes from that cell. It is computed as the
+average of the presented checkerboard weighted by the number of spikes using a
+set number of samples per repetition (here 21). The spatial STA is usually
+shown as the 2-dimensional spatial slice at the maximum value after smoothing.
+Temporal STA is the one dimensional time slice at the pixel with the maximum
+value. For smoothing, a double Gaussian is fitted on the resulting spatial
+STA.
+
+% Cell typing (probably useless here, but say a word about it)
+
+% Nat images
+\textbf{Natural images.}
+We used a subset of the Open Access van Hateren Natural Images Dataset [ADD TO
+        BIB]. It consists of monochromatic and calibrated (perfect mapping from
+pixel
+value to luminance) images of diverse natural environments. These images need
+to
+be preprocessed to avoid triggering the adaptation to different ranges of light
+intensities in the retina, which would call unwanted
+dynamics. First, images with numerous saturated pixels were not included in our
+subset. Using a custom procedure previously developed in the laboratory, we
+then
+ensured the images were normalized in the mean luminance and the root mean
+square (RMS) contrast.
+
+\textbf{LSTA.}
+To record the local specoficity of the response of a ganglion cell to a natural
+image, we used a method called local spike trigger average (LSTA) for its
+analogy with the STA. This method was previously developed in the laboratory.
+We first generate a set of perturbed natural images by superimposing some of
+the natural images (3-4 images) with various perturbation patterns in the form
+of random checkerboards. We once again used a checker size of 42\microns.
+Following calibration guidelines measures in previous experiments, the
+amplitude of the perturbation was set to 12.5\%, where 100\% corresponds to a
+pixel value of 1. In the mouse retina, this amplitude was found to trigger a
+change in firing rate of approximately 1.5Hz in ganglion cells with high firing
+rates to the unperturbed images \citep{goldin_context-dependent_2022}.
+
+\textbf{Data visualization.}
+Due to the diversity of the data we work with, it can be challenging to have
+all the relevant information on one screen. First, it's important to always
+have the rasterplot in sight since it informs of the quality of the cell at a
+glance. I u
+
+\textbf{Data selection.}
+Not all recorded cells are suitable for all types of analysis. Overall, the
+main
+quality we look for in a cell is its stability during an entire stimulus clip.
+It reflects its health and likeliness to behave normally during the
+presentation. For our most complex experimentations, cells need to remain
+stable in-vitro for up to five hours, which is quite unlikely. In Fig. , we
+describe the different selection steps and their influence on the amount of
+usable data.
+Tp
+% Graph idea : All type of rasters for one cell
+% Bar chart representing the fading amount of data that can used for modeling
+
+Blablable to share my programming skills to help and improve the data pipeline
+of
+the
+laboratory.
+
+% Models : Put the emphasis on the balance between G.C. and data-driven models
+% Also insist on the time component of the models
 \textbf{Modeling.} This should be the main part of my internship and also the
 most challenging. We are designing a dynamical model of the retinal fast
 adaptation. In fact, we mostly look at the evolution of the response from an
@@ -72,15 +160,15 @@ TO FIND~\cite{}).
     \centering
     \includegraphics[scale = 0.2]{pics/GCModelDiagram.png}
     \caption{\textbf{Quick sketch of a gain control LNLN model.} Each bipolar
-        cell is composed of a linear spatial filter that selectively respond to
-        a part
-        of the scene, a non-linear activation function, and a gain control
-        mechanism
-        that scale its output depending on past events. They all converge into
-        on
-        bipolar cell (forming its receptive field) of which output is also
-        modeled
-        using a non-linear function.}\label{fig:LNLN}
+        cell is
+        composed of a linear spatial filter that selectively responds to part
+        of the scene,
+        a non-linear activation function, and a gain control mechanism that
+        scale its output
+        depending on past events. They all converge into on bipolar cell
+        (forming its receptive field)
+        of which output is also modeled using a non-linear function.}
+    \label{fig:LNLN}
 \end{figure}
 We will first study our models in a data agnostic manner and study its behavior
 for different set of parameters. We will then fit it on our own experimental

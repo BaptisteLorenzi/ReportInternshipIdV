@@ -1,12 +1,51 @@
 \section{Conclusion}\label{sec:Conclusion}
 
-We combined large-scale recordings of RGC responses to natural movie
-stimulations with CNN-based modeling to investigate the mechanisms of fast
-contrast adaptation in the retina.
+% Summary
+% Adaptation depends on previous patterns
+We observed that during natural image stimulation, many ganglion cells change
+their selectivity for different parts of the images depending on previous light
+patterns.
 
+% Modeling and Simulation
+We combined large-scale recordings of RGC responses to natural movie
+stimulations with CNN-based modeling to investigate such mechanisms of fast
+contrast adaptation in the retina.
+% Well I don't really have the rest to say here since it's not done
+
+% Interplay of different subunit pathways
+Under realistic regularization constraints, the CNNs learned a structure
+similar to retinal pathways, where a ganglion cell activation is the result of
+a pooling of local subunits of different types in a specific area in space, the
+ganglion cell receptive field.
+
+% Neural cells encode spatio-temporal features of natural scenes
+Our result supports the idea that retinal ganglion cells encode both
+spatial and temporal features of natural scenes on a local scale.
+Previous works have described those features to be encoded as features of the
+retinal response (latency, firing rate). We might be able to support this
+theory with further comparison of measured responses with predicted responses of
+our model.
+
+% Future Directions
+
+TO DO
+
+
+% Comparative analysis
+
+% Utility of measurements tools
+Maheswaranathan and colleagues \citep{maheswaranathan_interpreting_2023} have recently
+been able to predict different aspect of encoding in the retina using deep
+comvolutional network. In comparison, our experimental approach of estimating
+the LSTA allow a direct comparison from the model to the data. Classical
+estimation of performance can't describe what is missed in the prediction,
+while our qualitative comparison might be able to.
+
+% The what, why and how the retina
+% I think it's and accessible illustration of the main questions regarding the retinal code
 The modeling of retinal responses to natural stimuli has improved our
 understanding of complex retinal processing. In a recent review, Karamanlis and
-colleagues [ADD CITE], suggested three perspectives of study on the retinal
+colleagues /citep{}, suggested three perspectives of study on the retinal
 encoding of natural scenes: The circuit perspective ('How is the retinal code
 implemented?'), the normative perspective ('Why is it complimented this way?)
 and the coding perspective ('What is the code used by the retina?'). In this
