@@ -1,16 +1,80 @@
-\section{Introduction}
-\label{sec:introduction}
+\section{Introduction}\label{sec:introduction}
 
-The visual system processes complex stimuli by extracting from the visual scene spatio-temporal features that are relevant to behavior. This means that different neurons at different stages of perception are sensitive to specific features of the visual stimulus. Pulling together information from all this different types of neurons, the brain is then able to reconstruct the visual perception. This feature extraction already happens at the level of retina \citep{gollisch_eye_2010}. % However, it has been studied in the retina mostly in the case of simple stimuli like full-field flashes or moving bars. How the retina processes more complex stimuli like natural scenes is conversely still largely unclear.
+\textit{During my internship in Olivier Marre's team at l'Institut de la
+    Vision, I am
+    focusing on computational modeling of the retina. Olivier Marre's team is an
+    interdisciplinary laboratory, hosting four professors and a dozen of interns,
+    Ph.D. students and post-docs, working hand in hand to advance research
+    on the retina. They all have various backgrounds mainly from biology,
+    theoretical physics and engineering. In the context of this project, I've been
+    working
+    closely with Samuele Virgili, a third-year Ph.D. student, whose previous and
+    current projects all focus on the modeling of retinal ganglion cells.}
 
-Considered a part of the central nervous system in vertebrates, the retina is made of only a handful of layers of neurons. The first layer is composed of photo-sensitive neurons called photoreceptors, that act as light sensors for the network. They give their excitatory output to bipolar cells, which can be divided into 14 different types and each type responds differently to the same stimulus, allowing for a vast functional diversity. Bipolar cells excite in turn ganglion cells, which finally send the pre-processed visual information to the rest of the brain through the optic nerve. Ganglion cells can also be divided into different functional types (at least 32) and each type is believed to extract a different feature from the visual scene. The retina also has two classes of inhibitory neurons, horizontal and amacrine cells, that further modulate the processing of excitatory cells. Compared to the rest of the brain, its relative simplicity and its relatively easy experimental accessibility make the retina an ideal neural tissue to study using computational models. \newline
+% Context
+The ability of the visual system to process complex stimuli on different
+temporal and spatial scales is remarkable.
+Natural environments are such complex stimuli, and extracting the relevant
+features at all times is crucial for many species.
+% Here I already insist on two notions: natural stim and temporal complexity
 
-It has been shown that in order to operate optimally in a wide range of stimulation conditions, the retina adapts its responses to the statistics of the visual scene. In particular, it was observed to adapt both to the average luminance (stimulus average) and to the average contrast (stimulus distance from the mean or variance). 
-%Comment: I think the question is not phrased very well. Contrast adaptation is also relatively well known as well. The question is how does fast contrast adaptation plays a role in natural scene/image processing. 
-The retinal adaptation to the luminance of the scene is somehow well understood. For instance, it is known that the retina uses different neuronal pathways at low and high luminance. Less attention was given to the contrast adaptation, and it was always studied through the use of simple stimuli. From previous studies, contrast adaptation is known to have different timescales. While slower contrast adaptation ($\approx10s$) is better understood, fast adaptation (<1s) is more complex to study, and it is still unclear how it affects temporal processing and the sensitivity to stimulus features\citep{baccus_fast_2002}. Furthermore, contrast adaptation can also happen at different scales, either at the whole scene scale (global contrast adaptation) or within one ganglion cell receptive field, the part of the visual field that the cell receives inputs from (local contrast adaptation) \citep{garvert_local_2013}. Local contrast adaptation is especially relevant in understanding how ganglion cells respond to natural images, since these stimuli are full of spatial details like edges in which two contrast levels appear simultaneously. 
-%SAM: careful, here you speak of contrast as distance from the grey while before you spoke of it as stimulus variance. They are similar but not exactly the same. It can be confusing
-Such images are challenging to use, as they can't be summed up to a few statistics easily. 
+Both the accessibility and apparent complexity	of the retina make it a
+perfect candidate for the study of the front-end of visual processing
+\citep{gollisch_eye_2010}. In the mouse, the retina is composed of more
+than 30 parallel feature channels, embodied by ganglion cell types. Through
+their axons, the optic nerve, they provide information to numerous visual areas
+in the brain. % Introducing the animal model
+A few channels are active in the encoding of basic features including luminance
+changes and motion, that are only combined in more downstream areas. Other
+channels however are known to play a role in the extraction of specific
+features of natural scenes.
 
-In this work, we want to address how does fast contrast adaptation plays a role in natural scene processing. 
+% Introducing adaptation, with examples
+An important feature of natural scenes is the diversity of contrast levels in
+one scene. This diversity can be both spatial (plain and detailed object side
+to side) and temporal (sudden apparition of an object). It is known that the
+visual system adapts to the diversity of fluctuations in the scene. This
+adaptation begins in the retina. By probing the retina with flickers of
+different intensities, Baccus and colleagues revealed two distinct phases of
+sensitivity change in the retina: one fast (<0.1s) and one slow (over ~10s)
+\citep{baccus_fast_2002}.
+In another study, Garvert et al. revealed that contrast adaptation also
+happens at different scales, either at the whole scene scale (global contrast
+adaptation) or within one ganglion cell receptive field, the part of the visual
+field that the cell receives inputs from (local contrast adaptation)
+\citep{garvert_local_2013}.
 
-%SAM: I have changed the wording  and added something up to here but I believe the structure should be reorganized a bit. If you are not speaking about natural images up to here, why cite them in the first sentence. Also, you repeat several times in the introduction what you want to do changing it each time. State it only once at the end
+% Intoducing  natural scenes
+Still, we currently lack an explanation of the features extracted by many
+channels and how they adapt to diverse scenes. One of the historical
+reasons for this is that synthetic stimuli used
+to study retinal responses are not complex enough to activate these channels.
+Hence, they cannot uncover critical response properties encountered in natural
+environments. % Please rewrite this sentence
+
+In practice, Karamanlis and colleagues \citep{kim_nonlinear_2020} have
+probed a larger complexity in retinal spatial non-linearities thanks to stimuli
+capturing the statistics of natural environments.
+As those non-linearities cannot be captured by Linear-Nonlinear (LN) models,
+convolutional neural networks (CNNs) have become the state-of-the-art approach
+for predictive modeling of visual processing, not only in the retina but also
+in higher visual areas \citep{mcintosh_deep_2017}.
+% Add an example with the citation ?
+
+\textbf{Insight on methods}
+Here, we combined the power of CNN-based modeling with large-scale
+mutli-electrode array (MEA) recordings from RGCs to investigate the mechanisms
+of fast
+adaptation in the retina under natural stimulus conditions. To this end, we
+recorded RGC responses to flashed images paired together. Each pair is composed
+of a synthetic adaptation image followed by a natural image. We were able to
+identify different trends in the responses of RGCs to natural images, depending
+on the adaptation image. % Should I introduce LSTA here ?
+
+To investigate the diversity of this adaptation process and its implementation,
+we paired deep convolutional models with more traditional modeling. We trained
+a CNN model on RGC responses to a movie of flashed images. After training, we
+study how this model generalized to images after being adapted with
+patterns it wasn't trained to. By tweaking part of the model at the inference
+level, We hope to show that temporal mechanisms such as gain-control play a
+major role in the fast adaptation of RGCs in a natural context.
