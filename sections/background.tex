@@ -3,12 +3,15 @@
 \textbf{The retina.}
 In vertebrates, the retina is part of the central nervous system. It consists
 of just a few layers of neurons, each with a distinct role in processing visual
-information \ref{fig:retina_structure}.
+information (Figure \ref{fig:retina_structure}, Left).
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{pics/RetinaAnatToFunction.png}
-    \caption{\textbf{From anatomy to functional modeling.} In standard LN
+    \includegraphics[width=\textwidth]{pics/RetinaAnatToFunction.png}
+    \caption{\textbf{From anatomy to functional modeling.} \textbf{Left.}
+        Schema of the layered anatomy of the retina. \textbf{Right.} Schema of
+        a LNLN
+        model. In standard LN
         models,
         photoreceptors are considered purely linear and simply mapped to each
         pixel of
@@ -28,8 +31,11 @@ information \ref{fig:retina_structure}.
 \end{figure}
 
 At its forefront are photosensitive neurons known as photoreceptors, which
-serve as the initial light sensors within this neural network. ADD ABOUT CONES
-AND RODS
+serve as the initial light sensors within this neural network. Rods are for
+low-light
+and peripheral vision, while cones are for bright light, color perception, and
+central vision. Rods are more sensitive to light but don't perceive color,
+while cones enable color vision.
 
 These photoreceptors stimulate bipolar cells, a diverse group comprising 15-20
 anatomical
@@ -60,20 +66,7 @@ Compared to the rest of the brain, the retina is relatively simple,
 making it an ideal neural tissue for in-depth study using computational models.
 Its accessibility for experimental research further enhances its appeal as a
 valuable subject for investigating neural code and neural processes.
-
-\textbf{Standard model of the retina.}
-CITE THE STUDY FROM THE VIDEO Blablable
-
-There is a standard functional model of the retina that has been used
-intensively with great success.
-
-The simpler model, the Linar-Nonlinear (LN) model, describe a functional unit
-of the retina as a combination of a spatio-temporal linear filter and a
-non-linearity \ref{fig:retina_structure}.
-The Linear-Nonlinear-Linear-Nonlinear (LNLN) model, models a RGC as a cascade
-of LN models representing bipolar cells.
-
-It is composed of a linear spatial filter, a non-linear activation function and
+% I guess the figure is enough
 
 \textbf{Adaptation in the retina}
 To operate optimally in a wide range of
@@ -84,8 +77,9 @@ luminance as well as the range of intensity fluctuations about the mean,
 referred to as the contrast of the scene.
 
 Visual systems can function over a wide range of light intensities, from
-starlight to a bright sunny day – a luminance range of 10 10
-The retinal adaptation to the luminance of the scene is quite simple by nature.
+starlight to a bright sunny day – a luminance range of $10^{10}$.
+At first glance, the retinal adaptation to the luminance of the scene is quite
+simple by nature.
 For instance, it is known that the retina uses different neuronal
 pathways at low and high luminance. Rods and their retinal neuronal channels
 cover the dimmest light while cones facilitate contrast, color and motion
@@ -96,24 +90,23 @@ In a high-contrast environment, RGC tends to be more much less sesnsitive than
 in low contrast envrionment \cite{} ???.
 This sensivity adaptation happens on different timescales.
 A large change in stimulus contrast wouldn't change the response properties of
-cones and horizontal cells \cite{}. But it would change the behaviour of
+cones and horizontal cells \citep{baccus_fast_2002}. But it would change the
+behaviour of
 bipolar cells, meaning fast adaptation to contrast begin in their sublayer.
 This almost immediate effect of a contrast increment changes the the property
 of some bipolar cells, including their temporal patterns as well as their
 selectivity. Their diverse response to this contarst increment
 is correlated to the diversity of functional and morphological subtypes among
-bipolar cells \cite{baccus_fast_2002}.
-This evolution is also seen in all ganglion cells.
-% ADD NORE DETAILS ???
+bipolar cells.
+Interestingly, This evolution is also seen in all ganglion cells.
 
-% Intersting passage on modeling that coulf be useful here
+% ADD MORE DETAILS ???
 
-BEEEH It is still unclear how it
-affects temporal processing and the sensitivity to stimulus
-features\citep{baccus_fast_2002}.
+% In the paper, there is an Intersting passage on modeling that could be useful here
 
 Furthermore, contrast adaptation can also
-happen at different scales, either at the whole scene scale (global contrast
+happen at different spatiel scales, either at the whole scene scale (global
+contrast
 adaptation) or within one ganglion cell receptive field, the part of the visual
 field that the cell receives inputs from (local contrast adaptation)
 \citep{garvert_local_2013}. Local contrast adaptation is especially relevant in
@@ -121,6 +114,8 @@ understanding how ganglion cells respond to natural images since these stimuli
 are full of spatial details like edges in which two contrast levels appear
 simultaneously. Such images are challenging to use, as they can't be summed up
 to a few statistics easily.
+
+% Here, I want to cite the global and local adaptation paper and inisist on the stimuli they used
 
 \textbf{Retinal response to natural images.}
 
@@ -140,6 +135,17 @@ retina. In particular, ON-OFF selectivity seems to be encoded by the contrast
 of the image, revealing the retina to extract more complex features from the
 retina than previously thought.
 
+\textbf{Standard model of the retina.}
+CITE THE STUDY FROM THE VIDEO Blablable
+
+There are two standard functional models of the retina that has been used with
+great success. The simpler model, the Linar-Nonlinear (LN) model, describe a
+functional unit
+of the retina as a combination of a spatio-temporal linear filter and a
+non-linearity (Figure \ref{fig:retina_structure}, Right).
+The Linear-Nonlinear-Linear-Nonlinear (LNLN) model, models a RGC as a cascade
+of LN models representing bipolar cells.
+
 \textbf{Convolutional Neural Networks.}
 
 Due to the large statistical complexity of natural scenes, convolutional neural
@@ -152,7 +158,7 @@ learn a lot from those models, especially regarding local and temporal
 dynamics.
 
 CNNs have also been used to describe the cortex response to natural images
-\cite{cadena_deep_2019}. The amount of available cortex data even led to the
+\citep{cadena_deep_2019}. The amount of available cortex data even led to the
 development of a 'foundation model' of the mouse visual cortex with a
 remarkable capacity to generalize to various stimulus domains \cite{wang}. TO
 ADD

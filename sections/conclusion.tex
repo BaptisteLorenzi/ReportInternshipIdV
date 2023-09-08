@@ -23,18 +23,29 @@ Our result supports the idea that retinal ganglion cells encode both
 spatial and temporal features of natural scenes on a local scale.
 Previous works have described those features to be encoded as features of the
 retinal response (latency, firing rate). We might be able to support this
-theory with further comparison of measured responses with predicted responses of
+theory with further comparison of measured responses with predicted responses
+of
 our model.
 
 % Future Directions
 
-TO DO
-
+Our work in the following months should take multiple directions. First, we are
+investigating how more complex models perform on the prediction of LSTA (see
+Annexe 1).
+Second, we want to study if adding divisive non-linear temporal
+dynamic in the subunits could help take the effect of the adaptation images
+into
+account (see Annexe 2).
+Third, we would be interested to see if the LSTA adaptation is only dependent
+on the local luminance of the adaptatio images or also on the local temporal
+contrast. To do that we could add flickering of different speed to the black
+and white checks.
 
 % Comparative analysis
 
 % Utility of measurements tools
-Maheswaranathan and colleagues \citep{maheswaranathan_interpreting_2023} have recently
+Maheswaranathan and colleagues \citep{maheswaranathan_interpreting_2023} have
+recently
 been able to predict different aspect of encoding in the retina using deep
 comvolutional network. In comparison, our experimental approach of estimating
 the LSTA allow a direct comparison from the model to the data. Classical
@@ -45,12 +56,13 @@ while our qualitative comparison might be able to.
 % I think it's and accessible illustration of the main questions regarding the retinal code
 The modeling of retinal responses to natural stimuli has improved our
 understanding of complex retinal processing. In a recent review, Karamanlis and
-colleagues /citep{}, suggested three perspectives of study on the retinal
+colleagues \citep{} [ADD TO BIB], suggested three perspectives of study on the
+retinal
 encoding of natural scenes: The circuit perspective ('How is the retinal code
 implemented?'), the normative perspective ('Why is it complimented this way?)
 and the coding perspective ('What is the code used by the retina?'). In this
-work,
-We focus on the 'what'. By exploring the response of the retina to a portion of
+work, we focused on the 'what' for now. By exploring the response of the retina
+to a portion of
 the spatio-temporal stimuli space we can gain insight into the code used by the
 retina on that subspace. To explore further the 'how' perspective, one would
 need to study how the different known types of cells in the retina participate
@@ -59,9 +71,7 @@ functional and anatomical perspectives.
 The normative perspective has also been explored using deep CNNs with
 anatomically realistic constrained. It is likely that species with simpler
 cortical circuitry, as mice, have a stronger need for upstream feature
-extraction, in the retina. In opposition, species with computationally powerful
+extraction, in the retina [ADD CITE]. In opposition, species with computationally powerful
 cortexes such as primates can deal with more faithful and linear
 representations
 of the visual inputs.
-Some studies admirably developed approaches that allow investigation of retinal
-processing from all three perspectives [ADD CITE].
