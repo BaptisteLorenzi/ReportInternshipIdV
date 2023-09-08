@@ -74,7 +74,7 @@ usually rated by their reliability.
 After spike sorting, we analyze the recording from standard stimuli to
 characterize each
 ganglion cell receptive field. To this end, we display a random binary
-checkerboard for approximately 1 h at 30 Hz. Check size is 42\microns. A
+checkerboard for approximately 1 h at 30 Hz. Check size is 42\textmu m A
 ganglion cell receptive is computed as its spike trigger average (STA), for
 this checkerboard stimulus. The STA of a cell can also be described as the
 stimulus that triggers the most spikes from that cell. It is computed as the
@@ -108,7 +108,7 @@ image, we used a method called local spike trigger average (LSTA) for its
 analogy with the STA. This method was previously developed in the laboratory.
 We first generate a set of perturbed natural images by superimposing some of
 the natural images (3-4 images) with various perturbation patterns in the form
-of random checkerboards. We once again used a checker size of 42\microns.
+of random checkerboards. We once again used a checker size of 42\textmu m.
 Following calibration guidelines measures in previous experiments, the
 amplitude of the perturbation was set to 12.5\%, where 100\% corresponds to a
 pixel value of 1. In the mouse retina, this amplitude was found to trigger a
@@ -121,16 +121,23 @@ all the relevant information on one screen. First, it's important to always
 have the rasterplot in sight since it informs of the quality of the cell at a
 glance. I u
 
-\textbf{Data selection.}
+\textbf{Cell selection.}
 Not all recorded cells are suitable for all types of analysis. Overall, the
 main
 quality we look for in a cell is its stability during an entire stimulus clip.
 It reflects its health and likeliness to behave normally during the
 presentation. For our most complex experimentations, cells need to remain
-stable in-vitro for up to five hours, which is quite unlikely. In Fig. , we
+stable in-vitro for up to five hours, which is quite unlikely. In Fig. \ref{fig:cell_selection}, we
 describe the different selection steps and their influence on the amount of
 usable data.
-Tp
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{pics/CellSelection.png}
+    \caption{\textbf{Selecting cells suitable for the different degree of analysis.}}
+    \label{fig:cell_selecion}
+\end{figure}
+
 % Graph idea : All type of rasters for one cell
 % Bar chart representing the fading amount of data that can used for modeling
 
@@ -180,3 +187,28 @@ We will first study our models in a data agnostic manner and study its behavior
 for different set of parameters. We will then fit it on our own experimental
 data using an efficient optimization framework in python using strategies
 developed in the field of machine learning.
+
+In order to infer the non-linearities of the model, we will use a deepnet framework, optimized using the pytorch library.
+In practice, we use a model that differ slightly from the LNLN model \ref*{label}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pics/}
+    \caption{\textbf{From anatomy to functional modeling.} In standard LN
+        models,
+        photoreceptors are considered purely linear and simply mapped to each
+        pixel of
+        the visual input. Bipolar cells tile the input space. They are modeled
+        as a
+        spatial linear filer, a difference of Gaussian defining a excitatory
+        center and
+        inhibitory surround, a biphasic linear temporal filter and a
+        non-linearity.
+        Ganglion cell pull and average the signal from all the bipolar cells in
+        their
+        receptive field, and spike selectively depending on their
+        non-linearity. Notice the simplicity of LNLN model compared to the
+        anatomical
+        description of the retina.}
+    \label{fig:retina_structure}
+\end{figure}

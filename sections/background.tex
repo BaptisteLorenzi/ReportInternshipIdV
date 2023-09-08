@@ -3,16 +3,29 @@
 \textbf{The retina.}
 In vertebrates, the retina is part of the central nervous system. It consists
 of just a few layers of neurons, each with a distinct role in processing visual
-information \ref*{fig:retina_structure}. ADD FIGURE ON THE STRUCTURE OF THE RETINA
+information \ref{fig:retina_structure}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{pics/RetinaAnatToFunction.png}
-    \caption{The structure of the retina.}
+    \caption{\textbf{From anatomy to functional modeling.} In standard LN
+        models,
+        photoreceptors are considered purely linear and simply mapped to each
+        pixel of
+        the visual input. Bipolar cells tile the input space. They are modeled
+        as a
+        spatial linear filer, a difference of Gaussian defining a excitatory
+        center and
+        inhibitory surround, a biphasic linear temporal filter and a
+        non-linearity.
+        Ganglion cell pull and average the signal from all the bipolar cells in
+        their
+        receptive field, and spike selectively depending on their
+        non-linearity. Notice the simplicity of LNLN model compared to the
+        anatomical
+        description of the retina.}
     \label{fig:retina_structure}
 \end{figure}
-
-
 
 At its forefront are photosensitive neurons known as photoreceptors, which
 serve as the initial light sensors within this neural network. ADD ABOUT CONES
@@ -24,11 +37,10 @@ distinct types in the mouse. They all exhibit unique
 responses to visual stimuli, with an even larger functional complexity than
 anatomical diveristy. % Functional/genetic/anatomical types?
 
-The bipolar cells, in turn, excite retinal ganglion cells (RGC), the final
-relay in the
-chain, which then transmit the pre-processed visual data to the rest of the
-brain
-via the optic nerve. RGC of the same type are described as sharing the same
+The bipolar cells, in turn, excite retinal ganglion cells (RGC) which then
+transmit the pre-processed visual  information to the rest of the
+brain via the optic nerve.
+RGC of the same type are described as sharing the same
 physiology morphology,
 intra-retinal connectivity, retinal mosaic and genetic markers. It is not yet
 known if such biological markers are enough to define the variety of functional
@@ -51,7 +63,16 @@ valuable subject for investigating neural code and neural processes.
 
 \textbf{Standard model of the retina.}
 CITE THE STUDY FROM THE VIDEO Blablable
-Often called Linar-Nonlinear (LN) model, the standard model for cells in visual areas is a very ./.
+
+There is a standard functional model of the retina that has been used
+intensively with great success.
+
+The simpler model, the Linar-Nonlinear (LN) model, describe a functional unit
+of the retina as a combination of a spatio-temporal linear filter and a
+non-linearity \ref{fig:retina_structure}.
+The Linear-Nonlinear-Linear-Nonlinear (LNLN) model, models a RGC as a cascade
+of LN models representing bipolar cells.
+
 It is composed of a linear spatial filter, a non-linear activation function and
 
 \textbf{Adaptation in the retina}
