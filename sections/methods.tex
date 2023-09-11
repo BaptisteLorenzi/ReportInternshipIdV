@@ -3,7 +3,7 @@
 This work is in some ways a continuation of
 \cite{goldin_context-dependent_2022}, from which we derived most of the methods
 presented here. By comparison, this time we take account of temporal dynamics
-in the responses. The switch from 2D visual inputs to 3D spatio-temporal inputs
+in the responses. The switch from 2D visual inputs to 3D spatiotemporal inputs
 complexifies every steps of the analysis but is ... COMPLETE
 
 \textbf{Retinal recordings.}
@@ -113,7 +113,10 @@ Following calibration guidelines measures in previous experiments, the
 amplitude of the perturbation was set to 12.5\%, where 100\% corresponds to a
 pixel value of 1. In the mouse retina, this amplitude was found to trigger a
 change in firing rate of approximately 1.5Hz in ganglion cells with high firing
-rates to the unperturbed images \citep{goldin_context-dependent_2022}.
+rates to the unperturbed images \citep{goldin_context-dependent_2022}. To avoid any adaptation to a single reference natural image, we shuffled randomly all the clips.
+
+TO CONTINUE
+As for the STA, the LSTA is computed as the average of the perturbation patterns weighted by the response of the RGC. The responses is computed by counting the number of spikes on a time window ranging between +50ms and +450ms after the display of the natural image. It was chosen to minimize the impact in the response of delayed spikes due to the petrurbatio patterns, while maxiizing the capture of spikes that are responses to the natural image.
 
 \textbf{Data visualization.}
 Due to the diversity of the data we work with, it can be challenging to have

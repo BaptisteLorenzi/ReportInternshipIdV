@@ -2,9 +2,58 @@
 \label{sec:results}
 Some idea of speech: *** responses of exemplary RGCs
 
-
 Here, we investigated fast adaptation in the mouse retina under natural
-stimulus conditions. To this end, we trained a CNN model on RGC responses
-to a movie of flashed images appearing
-naturally in the mouse environment, % and then performed a model-guided
+stimulus conditions. To this end, we trained a CNN model on RGC responses to a
+movie of flashed images appearing naturally in the mouse environment, % and then performed a model-guided
 % search for stimuli that maximise the responses of RGCs.
+
+\textbf{A method to estimate how selectivity to natural images changes over time.}
+We recorded retinal ganglion cells (RGCs) in the mouse retina with multi-electrode arrays (MEAs) while displaying sequences of natural images.
+Each image was presented for 400 ms, preceded by one of three 400 ms adaptation light patterns: grey, checkerboard, or inverted checkerboard ADD FIG SUMMARY OR ID CARD.
+Each pair of adaptation pattern and natural image forms a stimulus clip lasting 800 ms.
+To measure the selectivity of RGC to different parts of the image, we added dim checkerboard patterns (Fig. \ref{fig:LSTA}).
+The amplitude of the pertrbation checkerboard was selected to introduce a small yet visible change in the RGC response compared to the RGD response to unperturbed natural image.
+1000 repetitions with different perturbation patterns was necessary to estimate the LSTA to one clip (see Methods).
+
+For each cell and each stimulus clip, we computed ane stimation of a local
+spike-trigegr average (LSTA) (Figure \ref{LSTA}), as the average of the
+perturbation patterns wieghted by the number of splikes they evoked. This
+estimation is similar to a more classical Spike Trigger Average (STA), but due
+to small amplitude of the perturbation checkerboard, we explore here a small,
+local region of the stimulus space centered on the reference natural image. The
+LSTA is a visualization of the gradient of the RGC response at the reference
+natural image point in stimulus space. From an experimental point of view,
+instead of perturbating the biological system itself (e.g. shutting down
+neuronal pathways) we perturbated the stimulus itself.
+
+We recorded RGC response from four different eyes. The first experiment was
+discarded since 750 repetitions was not sufficient to esimate the LSTA. The
+second experiment was also discarded since the retina was very unhealthy during
+the recordings. The third experiment was a great success with over 100 cells
+showing relevant LSTA for many different clips. FInally, we used a fourth
+experiment to both train and test our model and measure LSTA, once again with
+great success with about 100 cell with LSTAs despite the longer experimental
+time.
+
+\par~\textbf{Ganglion cells can change their selectivity depending on previous
+    light patterns.}
+
+We looked at the firing rate and the LSTA of more then 200 cells changed
+depending on the adaptation light pattern. Some clear hyptohesis can be made as
+in describe in Figure \ref{fig:CellExample}. We observed We have yet to do a
+statiscal analysis of the number of occurrences of those different behaviour.
+
+\textbf{Can a convolutional neural network model account for this dependance?}
+
+\textit{Disclaimer: This part is a work in progress.}
+
+\begin{figure}
+    \centering
+    \includegraphics[textwidth]{pics/ExampleCells.png}
+    \caption{\textbf{PSTH and LSTA depend on previous light patterns.} \textbf{Left} Poststimulus time histogram (PSTH) are histograms of the times at which neurons fire. In each plot, the time bins in grey correspond to the display of an adaptation pattern while time bins in white natural images.
+        The time axis is centered on the moment when the current natural image is displayed. So in order the four rectangles are previous natural image, current adaptation pattern, current natural image, next adaptation pattern. The area highlighted in yellow corresponds to the 400 ms windows over which spikes are integrated to compute the LSTA. Adaptation effect can already be seen there, the fring rate of the RGC can be modified by the adaptation pattern.
+        Each color corresponds to a different 'previous natural image' displayed 800ms before the current natural image. We noticed that it had an influence on the response of the RGC to the current natural image. After looking at all the pSTH of all the cells, we judged that it was minor enough to not impact the behavior of the RGC that we want to visualize. Longer time windows would reduce the number of repetation that can be shown in a set amount of time and reduce the quality of the estimation of the LSTA.
+        \textbf{Right} Local Spike Triggered Average (LSTA), average of the perturbation checkerboard patterns weighted by the number of spikes they evoked. Here we centered the view on the RGC receptive field and smoothed the LSTA using exponential tuning and spatial interpolation. We observed dependence on the adaptation pattern in On (Cell 1 ...), Off (Cell 2) and OnOff cells (Cell 3). A first hypothesis would be that for On cells, an area that stays white provoke less response that an area that goes from black in the adaptation pattern to white in the natural image - respectively black for Off cells (On Cell - Column ...).
+        However, this hypothesis does not hold true in all cases (jjj). For OnOff cell, this adaptation can happen in both pathways simultaneously (cell OnOff). We observed that a high spiking rate was not necessarily linked with a clearly defined LSTA and vice-versa. }
+    \label{fig:CellExample}
+\end{figure}

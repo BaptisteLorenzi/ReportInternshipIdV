@@ -1,23 +1,32 @@
-INFO:  latexindent version 3.15, 2022-01-21, a script to indent .tex files
-       latexindent lives here: /usr/share/texlive/texmf-dist/scripts/latexindent/
-       Fri Sep  1 11:58:15 2023
-       Filename: /home/baptistel/Documents/ReportInternshipIdV/sections/__latexindent_temp_conclusion.tex
+INFO:  latexindent.pl version 3.23, 2023-09-09, a script to indent .tex files
+       latexindent.pl lives here: C:/Users/bapti/AppData/Local/Programs/MiKTeX/scripts/latexindent/
+       Mon Sep 11 17:29:45 2023
+       Filename: c:/Users/bapti/Documents/IdV/ReportInternshipIdV/sections/__latexindent_temp_results.tex
 INFO:  Processing switches:
        -y|--yaml: YAML settings specified via command line
        -c|--cruft: cruft directory
-INFO:  Directory for backup files and /home/baptistel/Documents/ReportInternshipIdV//indent.log: /home/baptistel/Documents/ReportInternshipIdV/
+INFO:  Directory for backup files and c:/Users/bapti/Documents/IdV/ReportInternshipIdV//indent.log:
+       c:/Users/bapti/Documents/IdV/ReportInternshipIdV/
+INFO:  Perl modules are being loaded from the following directories:
+       C:/Strawberry/perl/lib/FindBin.pm
+       C:/Strawberry/perl/vendor/lib/YAML/Tiny.pm
+       C:/Strawberry/perl/lib/File/Copy.pm
+       C:/Strawberry/perl/lib/File/Basename.pm
+       C:/Strawberry/perl/lib/Getopt/Long.pm
+       C:/Strawberry/perl/vendor/lib/File/HomeDir.pm
+INFO:  LatexIndent perl modules are being loaded from, for example:
+       C:/Users/bapti/AppData/Local/Programs/MiKTeX/scripts/latexindent/LatexIndent/Document.pm
 INFO:  YAML settings read: defaultSettings.yaml
-       Reading defaultSettings.yaml from /usr/share/texlive/texmf-dist/scripts/latexindent/defaultSettings.yaml
-INFO:  YAML settings read: indentconfig.yaml or .indentconfig.yaml
-       Home directory is /home/baptistel (didn't find either indentconfig.yaml or .indentconfig.yaml)
-       To specify user settings you would put indentconfig.yaml here: /home/baptistel/indentconfig.yaml
-       Alternatively, you can use the hidden file .indentconfig.yaml as: /home/baptistel/.indentconfig.yaml
+       Reading defaultSettings.yaml from C:/Users/bapti/AppData/Local/Programs/MiKTeX/scripts/latexindent/defaultSettings.yaml
+INFO:  YAML reading settings
+       Home directory is C:\Users\bapti
+       latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
+       see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
 INFO:  YAML settings read: -y switch
        YAML setting: defaultIndent:'    '
        single-quoted string found in -y switch: '    ', substitute to     
        Updating mainSettings with defaultIndent:     
 INFO:  Phase 1: searching for objects
-       No objects found.
 INFO:  Phase 2: finding surrounding indentation
 INFO:  Phase 3: indenting objects
 INFO:  Phase 4: final indentation check
