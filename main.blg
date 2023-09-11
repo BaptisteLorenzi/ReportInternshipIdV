@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Database file #1: biblio.bib
+Warning--I didn't find a database entry for ""
+Warning--I didn't find a database entry for "wang"
+Warning--empty journal in mcintosh_deep_2017
+You've used 9 entries,
+            2773 wiz_defined-function locations,
+            670 strings with 7534 characters,
+and the built_in function-call counts, 6126 in all, are:
+= -- 557
+> -- 486
+< -- 4
++ -- 162
+- -- 153
+* -- 563
+:= -- 967
+add.period$ -- 49
+call.type$ -- 9
+change.case$ -- 78
+chr.to.int$ -- 9
+cite$ -- 19
+duplicate$ -- 219
+empty$ -- 355
+format.name$ -- 168
+if$ -- 1260
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 9
+newline$ -- 75
+num.names$ -- 36
+pop$ -- 125
+preamble$ -- 1
+purify$ -- 69
+quote$ -- 0
+skip$ -- 210
+stack$ -- 0
+substring$ -- 188
+swap$ -- 49
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 99
+warning$ -- 1
+while$ -- 38
+width$ -- 0
+write$ -- 165
+(There were 3 warnings)

@@ -35,7 +35,13 @@ stimulus pair, also referenced as a clip. Each frame is 864x864 pixels (3.5
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{pics/LSTAExplainV2.png}
-    \caption{\textbf{LSTA.}\textit{Adapted from Goldin et al., 2022.}  }
+    \caption{\textbf{LSTA.}\textit{Adapted from Goldin et al., 2022.} a. Natural images are
+    perturbed with checkerboards. Scale bar = 500 μm. b. A random sequence of perturbed natural
+    images is being flashed. A gray frame separates all flashes. To compute LSTA, we average all different
+    perturbations weighed by the number of spikes they evoked. c An example of LSTA for a cell of the
+    retina of a mouse. On top, the spatial and temporal receptive field of the cell, as classically used. On
+    the bottom, the LSTA of the cell (right) for different natural images (left). A green ellipse fitted on
+    the classical spatial field is shown on the LSTA for reference. d Same than c for an axolotl. }
     \label{fig:LSTA}
 \end{figure}
 % Give details about how the images are built for the camera?
@@ -123,7 +129,7 @@ pixel value of 1. In the mouse retina, this amplitude was found to trigger a
 change in firing rate of approximately 1.5Hz in ganglion cells with high firing
 rates to the unperturbed images \citep{goldin_context-dependent_2022}. To avoid any adaptation to a single reference natural image, we shuffled randomly all the clips.
 
-TO CONTINUE
+[TO CONTINUE]
 As for the STA, the LSTA is computed as the average of the perturbation patterns weighted by the response of the RGC. The responses are computed by counting the number of spikes on a time window ranging between +50ms and +450ms after the display of the natural image. It was chosen to minimize the impact in the response of delayed spikes due to the perturbation patterns while maxiizing the capture of spikes that are responses to the natural image.
 
 % FROM NOW ON THERE IS S LOT TO WRITE...
