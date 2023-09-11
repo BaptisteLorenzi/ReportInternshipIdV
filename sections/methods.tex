@@ -1,44 +1,51 @@
 \section{Methods}\label{sec:methods}
 
-This work is in some ways a continuation of
+This work is in many ways a continuation of
 \cite{goldin_context-dependent_2022}, from which we derived most of the methods
-presented here. By comparison, this time we take account of temporal dynamics
-in the responses. The switch from 2D visual inputs to 3D spatiotemporal inputs
-complexifies every steps of the analysis but is ... COMPLETE
+presented here. By comparison, this time we take into account temporal dynamics
+in the responses. The switch from 2D visual inputs to 3D spatio-temporal inputs
+complexifies every steps of the analysis but is a very stimulating scientific
+challenge.
 
 \textbf{Retinal recordings.}
-Since I don't realize any experiments myself, I will try here to give as few
+Since I don't realize any experiments myself, I will only give here as few
 details
-as necessary for the understanding of the rest of the work. Still, experimental
-recording of the retina is a very interesting topic and the reader can look
-here for more information. % Useful ?
+as necessary for the understanding of the rest of the work. More on our
+exeperimental strategy
+is described in \cite{goldin_context-dependent_2022}.
+
 The laboratory has access to three experimental rooms that enable
 state-of-the-art experimentation
-on the retina.	For this project, we record the activity of retinal ganglion
-cells
-using a multi-electrode array. The retina is placed on a ???
+on the retina.	In one of them, we record the activity of retinal ganglion
+cells using a multi-electrode array. The retina is placed on a ???
 % TO COMPLETE
-
-% A part to complete
 
 \textbf{Stimuli design.}
 The stimuli used in this project are composed of two images, one synthetic
-adaptation image followed by a natural image. Adaptation images are taken from
+adaptation image followed by a natural image (Figure \ref{fig:LSTA}.a,b).
+Adaptation images are taken from
 a pull of three different patterns: a grey screen used as control, a
-checkerboard of X*X checks and the same checkerboard with inverted colors (Fig.
-TO ADD). Natural images are taken from ADD REFERENCE. XXXX images were used for
+checkerboard of X*X checks and the same checkerboard with inverted colors
+(Figure \ref{fig:cell_selecion}.LSTA). Natural images are taken from ADD
+REFERENCE. 3180 images were used for
 training the CNN, 10 were used to test the CNN and among them, 3 were used to
 record an estimation of the LSTA of each cell.
 Adaptation and natural images are always paired together to form a single
-stimulus pair, also referenced as a clip. Each frame is XXXxXXX pixels wide and
-each clip is 2*400ms long.
+stimulus pair, also referenced as a clip. Each frame is 864x864 pixels (3.5
+\textmu m) wide and each clip is 2*400ms long. %TO CHECK
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{pics/LSTAExplainV2.png}
+    \caption{\textbf{LSTA.}\textit{Adapted from Goldin et al., 2022.}  }
+    \label{fig:LSTA}
+\end{figure}
 % Give details about how the images are built for the camera?
 
-The training set is composed of XXXX clips, each composed of the grey
+The training set is composed of 3180 clips, each composed of the grey
 adaptation image followed by a natural image. The test set is composed of 30
-clips, each repeated 30 times. The test clips are composed of 10 different
-natural
+clips, each repeated 30 times, for a total of 900 clips.
+The test clips are composed of 10 different natural
 images preceded by each adaptation (3 different clips for each natural image).
 The dataset used to record LSTA is composed of 9 different clips repeated 1000
 times. Each clip is composed of one of the three selected natural images
@@ -46,23 +53,24 @@ preceded by one of the adaptation patterns.
 
 We first used 4 different natural images while computing the LSTA of each cell,
 each 12 different clips being repeated 12 times. We found that the estimation
-of the LSTA was too unstable with only 750 repetitions. In following
-experiments we excluded the image that yielded the least amount of stable
+of the LSTA was too unstable with only 750 repetitions. In the following
+experiments, we excluded the image that yielded the least amount of stable
 estimations of LSTA (20\% average success rate as compared to 42\% average
 success rate for the other three images). We then used 3 different natural
 images while computing the LSTA of each cell, each 9 different clips being
-repeated 1000 times. We found that the estimation of the LSTA was stable with
-1000 repetitions.
+repeated 1000 times. We found that the estimation of the LSTA was more stable
+with 1000 repetitions.
 
 \textbf{Data processing.}
 Multi-electrode array experimental data takes the shape of a collection of
 temporal electrical signals tiling the recorded area.
 In most scenarios, including here, these signals are sorted into different cell
-signals using a semi-automatic algorithm. This algorithm is based on the shape
+signals using a semi-automatic clustering algorithm. This algorithm is based on
+the shape
 of the electrical spikes as well as their spatial location. It is
 quite messy due to the low signal-to-noise ratio in the data and each
-experiment
-needs to have its sorting corrected by hand. This process can take up to an
+experiment needs to have its sorting corrected by hand.
+This process can take up to an
 entire day for a single experiment. I used spiking-circus for semi-automatic
 spike sorting and the UI phy for handmade corrections. [CITE]
 It is important to note that even though the retina is an easier organ than
@@ -74,7 +82,7 @@ usually rated by their reliability.
 After spike sorting, we analyze the recording from standard stimuli to
 characterize each
 ganglion cell receptive field. To this end, we display a random binary
-checkerboard for approximately 1 h at 30 Hz. Check size is 42\textmu m A
+checkerboard for approximately 1 h at 30 Hz. Check size is 42\textmu m. A
 ganglion cell receptive is computed as its spike trigger average (STA), for
 this checkerboard stimulus. The STA of a cell can also be described as the
 stimulus that triggers the most spikes from that cell. It is computed as the
@@ -85,6 +93,7 @@ Temporal STA is the one dimensional time slice at the pixel with the maximum
 value. For smoothing, a double Gaussian is fitted on the resulting spatial
 STA.
 
+% Add a figure with clear viz of STA and RF
 % Cell typing (probably useless here, but say a word about it)
 
 % Nat images
@@ -108,7 +117,8 @@ image, we used a method called local spike trigger average (LSTA) for its
 analogy with the STA. This method was previously developed in the laboratory.
 We first generate a set of perturbed natural images by superimposing some of
 the natural images (3-4 images) with various perturbation patterns in the form
-of random checkerboards. We once again used a checker size of 42\textmu m.
+of random checkerboards (Figure \ref{fig:LSTA}). We once again used a checker
+size of 42\textmu m.
 Following calibration guidelines measures in previous experiments, the
 amplitude of the perturbation was set to 12.5\%, where 100\% corresponds to a
 pixel value of 1. In the mouse retina, this amplitude was found to trigger a
@@ -118,100 +128,178 @@ rates to the unperturbed images \citep{goldin_context-dependent_2022}. To avoid 
 TO CONTINUE
 As for the STA, the LSTA is computed as the average of the perturbation patterns weighted by the response of the RGC. The responses is computed by counting the number of spikes on a time window ranging between +50ms and +450ms after the display of the natural image. It was chosen to minimize the impact in the response of delayed spikes due to the petrurbatio patterns, while maxiizing the capture of spikes that are responses to the natural image.
 
+% FROM NOW ON THERE IS S LOT TO WRITE...
 \textbf{Data visualization.}
-Due to the diversity of the data we work with, it can be challenging to have
+Due to the complexity of the recorded information, it can be challenging to
+have
 all the relevant information on one screen. First, it's important to always
-have the rasterplot in sight since it informs of the quality of the cell at a
-glance. I u
+have the raster plot in sight since it informs of the quality of the cell at a
+glance \ref{} [CREATE FIGURE].
+Blablable to share my programming skills to help and improve the data pipeline
+of the laboratory.
+
+% IS THIS PART VAUABLE......
+
+% Add a figure that sums up all the visualization, like a cell summary but with absolutely everything !!!
 
 \textbf{Cell selection.}
 Not all recorded cells are suitable for all types of analysis. Overall, the
-main
-quality we look for in a cell is its stability during an entire stimulus clip.
+main quality we look for in a cell is its stability during an entire stimulus
+clip.
 It reflects its health and likeliness to behave normally during the
 presentation. For our most complex experimentations, cells need to remain
-stable in-vitro for up to five hours, which is quite unlikely. In Fig. \ref{fig:cell_selection}, we
-describe the different selection steps and their influence on the amount of
-usable data.
+stable in-vitro for up to five hours, which is quite unlikely. In Figure
+\ref{fig:cell_selection}, we
+describe the different selection steps. Among the 264 cells
+in our last experiment, only 14 passed all of them. Note that a cell doesn't to
+pass all the tests to be considered for a given analysis. For example, any cell
+that passed the 'CNN-Train' could be used to fine-tuned the CNN model.
+% Graph idea : All type of rasters for one cell
 
+% I got a bit original on that figure, I don't thing it's taht great but well
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{pics/CellSelection.png}
-    \caption{\textbf{Selecting cells suitable for the different degree of analysis.}}
+    \includegraphics[width=\textwidth]{pics/CellSelection.png}
+    \caption{\textbf{Selecting cells suitable for the different degree of
+            analysis.} \textbf{Middle.} Flow chart of the cell selection. In
+        red, we painted the amount of cells that successively passed each test.
+        \textbf{Outer.} Example of good and
+        bad cells
+        for each test. On each raster plot, a vertical bar represents the
+        instant the natural image was shown, following the adaptation pattern.
+        For the
+        training dataset, we looked for cells that
+        consistently spike on natural images. The more constant the delay, the
+        more
+        stable the cell. For the test dataset, we looked for cells that gave a
+        stable
+        response to most of the repeated test clips. For the LSTA analysis, we
+        looked
+        for cells that showed bright spots in the unfiltered data, to avoid
+        confusing
+        noise for signal after smoothing. To determine if the cell had a
+        modeling
+        interest, we smoothed the LSTA and zoomed on the cell receptive field.
+        A cell
+        is considered interesting if its LSTA is well-defined for numerous
+        pairs. The
+        most interesting cells are those where the LSTA is impacted by the
+        adaptation
+        image.}
+    % That description is not clear enough if the rasters are not described somewhere else
     \label{fig:cell_selecion}
 \end{figure}
 
-% Graph idea : All type of rasters for one cell
-% Bar chart representing the fading amount of data that can used for modeling
-
-Blablable to share my programming skills to help and improve the data pipeline
-of
-the
-laboratory.
-
 % Models : Put the emphasis on the balance between G.C. and data-driven models
 % Also insist on the time component of the models
-\textbf{Modeling.} This should be the main part of my internship and also the
-most challenging. We are designing a dynamical model of the retinal fast
-adaptation. In fact, we mostly look at the evolution of the response from an
-image to another, meaning that the dynamic we observe only spans two points in
-time. This reduction makes the model more realistic to study. Most of this job
-can be summarized as model design, python programming, sensitivity analysis and
-data fitting. By comparing how different modeling strategies reproduce the
+
+\textbf{Modeling.} This is the most consistent part of my work in the
+laboratory, as well as the
+most challenging. We are designing a dynamic model of the retinal fast
+adaptation.
+By comparing how different modeling strategies reproduce the
 observed LSTA in the data, we can gain insight on how fast adaptation to
 natural scene is implemented in the retina.
 %I think what is missing here is what question you want to answer with this. We should discuss this more. 
 
-Our baseline model is the LNLN model of ganglion cell widely used in the
-literature. Each neuron is encoded as a spatial linear filter chained with a
-non-linearity (usually an activation linearity in the like of ReLU). A single
-layer of subunit neurons, representing bipolar cells, converge into a single
-modeled ganglion cell.	We would like to add temporal dynamics to this model,
-either by adding a time dimension to the spatial liner filter of the cells or
-by considering a gain control mechanism. This last mechanism consists in
-scaling up or down the present output depending on past outputs (Figure
-TO FIND~\cite{}).
+We first created a toy model (data-agnostic) of the retina, based on the LNLN
+model described
+in \ref{sec:background}. By adding a gain control mechanism to the model, we
+were able to reproduce some behavior of the LSTA as observed in the data \ref{}
+[AJOUTER ANNEXE PROPREMENT].
+This approach is very limited since the numerous non-linearities in the LNLN
+model make its dynamics very complex.
+As an answer we are fitting a more complex model, based on a convolutional
+neural network (CNN), that will be able to infer the non-linearities from the
+data. TFor this report, we'll focus on this part of the modeling since it is
+what I've been working on the most yet.
+We are using a deepnet framework, optimized using the
+pytorch library. In practice, we use a model that differs slightly from the
+LNLN
+model. In Figure \ref*{fig:CNN_simple}, we show a simplified view of our
+architecture focusing on how the model predict spikes from a video clip.
+
+Additionaly, we are using a few regularaization stratgies to improve the model
+performance as well as ensure it learns filter that are comparable to the
+retina. % CHANGE THAT
+The subunit filters are regularized using a smoothing constraint, the L2
+regularization. The RGC receptive field is regularized using a sparsity
+constraint, the L1 regularization, as well as L1. Using a process call batch
+normalization, we also ensure that the activation maps as well as the feature
+scores matrix stay around 0 while not taking too small values that would
+produce numerical errors. Finally, to partially avoid overfitting on the
+training set, we added a dropout layer between the subunits and the RGC
+receptive field.
+
+Each trial of model were optimized using the Adam optimizer, with varying
+learning rate. The loss function is the Negative log likelihood loss with
+Poisson distribution of target. It is a standard loss function for predicting
+rare events such as neural spikes.
+The hyperparameters of the regularizations were optimized using a random grid
+search strategy, using a pipeline recently developed within the laboratory
+    [CITE PIPELINE]. % ADD REFERENCE
+
+All the code was written in python and is mainly built around the pytorch
+library. [CITE PYTORCH]
+we hough the explanations of those concepts were out of the scope of the main
+text of this report. A more accurate and mathematical description of the model,
+the regularizations and the optimization strategy can be found in the appendix
+    [CITE APPENDINX][DO
+        THE APPENDIX].
+
+As an indication, one trial of the model takes approximately 2 hours to train.
+The current results of this project are already the results of more than one
+month of consecutive computation.
 
 \begin{figure}
     \centering
-    \includegraphics[scale = 0.2]{pics/GCModelDiagram.png}
-    \caption{\textbf{Quick sketch of a gain control LNLN model.} Each bipolar
-        cell is
-        composed of a linear spatial filter that selectively responds to part
-        of the scene,
-        a non-linear activation function, and a gain control mechanism that
-        scale its output
-        depending on past events. They all converge into on bipolar cell
-        (forming its receptive field)
-        of which output is also modeled using a non-linear function.}
-    \label{fig:LNLN}
+    \includegraphics[width=\textwidth]{pics/CNNSimpleWithImgs.png}
+    \caption{\textbf{From stimulus to prediction in the CNN model.} Elements in
+        black are the input and consecutive outputs while colored
+        elements
+        represent the model layers. Lines with arrows represent a convolution
+        (the
+        filter is dragged upon the input to produce the output, usually of
+        smaller
+        dimensions), while pointed lines represent a zoom on a given layer. N
+        is the size of the batch. The subunit filters and the ganglion feature
+        weights layer end
+        with a non-linearity (ReLU and SoftPlus respectively).
+        Each subunit filter (here only two are shown) represents the
+        selectivity
+        of a subunit (one can think of them as bipolar cells). Each subunit
+        type tiles the entire input spatially. They also integrate temporal
+        events on a given number of frames. Each pixel of the
+        activation maps encodes the level of activation of that subunit in that
+        particular location and at that particular instant.
+        The RGC receptive field is similar instead that it tiles the entire
+        spatial input. It could be described as a pooling of the subunit
+        activation
+        maps. The RGC is modeled to also integrate temporal events on a given
+        number of frames. This spatiotemporal receptive field is the same for
+        all
+        subunits but the scores corresponding to each subunit pathway are
+        different.
+        Finally, the feature weights represent how much of each feature is
+        relevant foe
+        determining the spiking frequency on a given temporal bin. This layer
+        is just
+        a weighted average of the two features and a non-linearity.
+    }
+    \label{fig:CNN_simple}
 \end{figure}
-We will first study our models in a data agnostic manner and study its behavior
-for different set of parameters. We will then fit it on our own experimental
-data using an efficient optimization framework in python using strategies
-developed in the field of machine learning.
 
-In order to infer the non-linearities of the model, we will use a deepnet framework, optimized using the pytorch library.
-In practice, we use a model that differ slightly from the LNLN model \ref*{label}.
+% Our baseline model is the LNLN model of ganglion cell widely used in the
+% literature. Each neuron is encoded as a spatial linear filter chained with a
+% non-linearity (usually an activation linearity in the like of ReLU). A single
+% layer of subunit neurons, representing bipolar cells, converge into a single
+% modeled ganglion cell.	We would like to add temporal dynamics to this model,
+% either by adding a time dimension to the spatial liner filter of the cells or
+% by considering a gain control mechanism. This last mechanism consists in
+% scaling up or down the present output depending on past outputs (Figure
+% TO FIND~\cite{}).
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{pics/}
-    \caption{\textbf{From anatomy to functional modeling.} In standard LN
-        models,
-        photoreceptors are considered purely linear and simply mapped to each
-        pixel of
-        the visual input. Bipolar cells tile the input space. They are modeled
-        as a
-        spatial linear filer, a difference of Gaussian defining a excitatory
-        center and
-        inhibitory surround, a biphasic linear temporal filter and a
-        non-linearity.
-        Ganglion cell pull and average the signal from all the bipolar cells in
-        their
-        receptive field, and spike selectively depending on their
-        non-linearity. Notice the simplicity of LNLN model compared to the
-        anatomical
-        description of the retina.}
-    \label{fig:retina_structure}
-\end{figure}
+% We will first study our models in a data agnostic manner and study its behavior
+% for different set of parameters. We will then fit it on our own experimental
+% data using an efficient optimization framework in python using strategies
+% developed in the field of machine learning.
