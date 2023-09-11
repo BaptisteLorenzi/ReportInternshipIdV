@@ -3,16 +3,14 @@
 This work is in many ways a continuation of
 \cite{goldin_context-dependent_2022}, from which we derived most of the methods
 presented here. By comparison, this time we take into account temporal dynamics
-in the responses. The switch from 2D visual inputs to 3D spatio-temporal inputs
-complexifies every steps of the analysis but is a very stimulating scientific
+in the responses. The switch from 2D visual inputs to 3D spatiotemporal inputs
+complexifies every step of the analysis but is a very stimulating scientific
 challenge.
 
 \textbf{Retinal recordings.}
 Since I don't realize any experiments myself, I will only give here as few
-details
-as necessary for the understanding of the rest of the work. More on our
-exeperimental strategy
-is described in \cite{goldin_context-dependent_2022}.
+details as necessary for the understanding of the rest of the work. More on our
+experimental strategy is described in \cite{goldin_context-dependent_2022}.
 
 The laboratory has access to three experimental rooms that enable
 state-of-the-art experimentation
@@ -42,7 +40,7 @@ stimulus pair, also referenced as a clip. Each frame is 864x864 pixels (3.5
 \end{figure}
 % Give details about how the images are built for the camera?
 
-The training set is composed of 3180 clips, each composed of the grey
+The training set is composed of 3180 clips, each composed of a grey
 adaptation image followed by a natural image. The test set is composed of 30
 clips, each repeated 30 times, for a total of 900 clips.
 The test clips are composed of 10 different natural
@@ -89,7 +87,7 @@ stimulus that triggers the most spikes from that cell. It is computed as the
 average of the presented checkerboard weighted by the number of spikes using a
 set number of samples per repetition (here 21). The spatial STA is usually
 shown as the 2-dimensional spatial slice at the maximum value after smoothing.
-Temporal STA is the one dimensional time slice at the pixel with the maximum
+The temporal STA is the one-dimensional time slice at the pixel with the maximum
 value. For smoothing, a double Gaussian is fitted on the resulting spatial
 STA.
 
@@ -104,7 +102,7 @@ pixel
 value to luminance) images of diverse natural environments. These images need
 to
 be preprocessed to avoid triggering the adaptation to different ranges of light
-intensities in the retina, which would call unwanted
+intensities in the retina, which would trigger unwanted
 dynamics. First, images with numerous saturated pixels were not included in our
 subset. Using a custom procedure previously developed in the laboratory, we
 then
@@ -112,7 +110,7 @@ ensured the images were normalized in the mean luminance and the root mean
 square (RMS) contrast.
 
 \textbf{LSTA.}
-To record the local specoficity of the response of a ganglion cell to a natural
+To record the local specificity of the response of a ganglion cell to a natural
 image, we used a method called local spike trigger average (LSTA) for its
 analogy with the STA. This method was previously developed in the laboratory.
 We first generate a set of perturbed natural images by superimposing some of
@@ -126,7 +124,7 @@ change in firing rate of approximately 1.5Hz in ganglion cells with high firing
 rates to the unperturbed images \citep{goldin_context-dependent_2022}. To avoid any adaptation to a single reference natural image, we shuffled randomly all the clips.
 
 TO CONTINUE
-As for the STA, the LSTA is computed as the average of the perturbation patterns weighted by the response of the RGC. The responses is computed by counting the number of spikes on a time window ranging between +50ms and +450ms after the display of the natural image. It was chosen to minimize the impact in the response of delayed spikes due to the petrurbatio patterns, while maxiizing the capture of spikes that are responses to the natural image.
+As for the STA, the LSTA is computed as the average of the perturbation patterns weighted by the response of the RGC. The responses are computed by counting the number of spikes on a time window ranging between +50ms and +450ms after the display of the natural image. It was chosen to minimize the impact in the response of delayed spikes due to the perturbation patterns while maxiizing the capture of spikes that are responses to the natural image.
 
 % FROM NOW ON THERE IS S LOT TO WRITE...
 \textbf{Data visualization.}
@@ -135,8 +133,6 @@ have
 all the relevant information on one screen. First, it's important to always
 have the raster plot in sight since it informs of the quality of the cell at a
 glance \ref{} [CREATE FIGURE].
-Blablable to share my programming skills to help and improve the data pipeline
-of the laboratory.
 
 % IS THIS PART VAUABLE......
 
@@ -151,7 +147,7 @@ presentation. For our most complex experimentations, cells need to remain
 stable in-vitro for up to five hours, which is quite unlikely. In Figure
 \ref{fig:cell_selection}, we
 describe the different selection steps. Among the 264 cells
-in our last experiment, only 14 passed all of them. Note that a cell doesn't to
+in our last experiment, only 14 passed all of them. Note that a cell doesn't have to
 pass all the tests to be considered for a given analysis. For example, any cell
 that passed the 'CNN-Train' could be used to fine-tuned the CNN model.
 % Graph idea : All type of rasters for one cell
@@ -159,7 +155,7 @@ that passed the 'CNN-Train' could be used to fine-tuned the CNN model.
 % I got a bit original on that figure, I don't thing it's taht great but well
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{pics/CellSelection.png}
+    \includegraphics[width=0.7\textwidth]{pics/CellSelection.png}
     \caption{\textbf{Selecting cells suitable for the different degree of
             analysis.} \textbf{Middle.} Flow chart of the cell selection. In
         red, we painted the amount of cells that successively passed each test.
@@ -198,8 +194,8 @@ laboratory, as well as the
 most challenging. We are designing a dynamic model of the retinal fast
 adaptation.
 By comparing how different modeling strategies reproduce the
-observed LSTA in the data, we can gain insight on how fast adaptation to
-natural scene is implemented in the retina.
+observed LSTA in the data, we can gain insight into how fast adaptation to
+natural scenes is implemented in the retina.
 %I think what is missing here is what question you want to answer with this. We should discuss this more. 
 
 We first created a toy model (data-agnostic) of the retina, based on the LNLN
@@ -211,7 +207,7 @@ This approach is very limited since the numerous non-linearities in the LNLN
 model make its dynamics very complex.
 As an answer we are fitting a more complex model, based on a convolutional
 neural network (CNN), that will be able to infer the non-linearities from the
-data. TFor this report, we'll focus on this part of the modeling since it is
+data. For this report, we'll focus on this part of the modeling since it is
 what I've been working on the most yet.
 We are using a deepnet framework, optimized using the
 pytorch library. In practice, we use a model that differs slightly from the
@@ -219,7 +215,7 @@ LNLN
 model. In Figure \ref*{fig:CNN_simple}, we show a simplified view of our
 architecture focusing on how the model predict spikes from a video clip.
 
-Additionaly, we are using a few regularaization stratgies to improve the model
+Additionaly, we are using a few regularization strategies to improve the model
 performance as well as ensure it learns filter that are comparable to the
 retina. % CHANGE THAT
 The subunit filters are regularized using a smoothing constraint, the L2
@@ -231,7 +227,7 @@ produce numerical errors. Finally, to partially avoid overfitting on the
 training set, we added a dropout layer between the subunits and the RGC
 receptive field.
 
-Each trial of model were optimized using the Adam optimizer, with varying
+Each trial of the model were optimized using the Adam optimizer, with varying
 learning rate. The loss function is the Negative log likelihood loss with
 Poisson distribution of target. It is a standard loss function for predicting
 rare events such as neural spikes.
