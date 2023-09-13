@@ -17,11 +17,12 @@ information (Figure \ref{fig:retina_structure}, Left).
         pixel of
         the visual input. Bipolar cells tile the input space. They are modeled
         as a
-        spatial linear filer, a difference of Gaussian defining a excitatory
+        spatial linear filer, a difference of Gaussian defining an excitatory
         center and
         inhibitory surround, a biphasic linear temporal filter and a
         non-linearity.
-        Ganglion cell pull and average the signal from all the bipolar cells in
+        Ganglion cells pull and average the signal from all the bipolar cells
+        in
         their
         receptive field, and spike selectively depending on their
         non-linearity. Notice the simplicity of LNLN model compared to the
@@ -41,7 +42,7 @@ These photoreceptors stimulate bipolar cells, a diverse group comprising 15-20
 anatomical
 distinct types in the mouse. They all exhibit unique
 responses to visual stimuli, with an even larger functional complexity than
-anatomical diveristy. % Functional/genetic/anatomical types?
+anatomical diversity. % Functional/genetic/anatomical types?
 
 The bipolar cells, in turn, excite retinal ganglion cells (RGC) which then
 transmit the pre-processed visual  information to the rest of the
@@ -50,11 +51,13 @@ RGC of the same type are described as sharing the same
 physiology morphology,
 intra-retinal connectivity, retinal mosaic and genetic markers. It is not yet
 known if such biological markers are enough to define the variety of functional
-output channels of the retina. According to Baden and co-worker, there should
+output channels of the retina. According to Baden and co-workers, there should
 be at least 32 different RGC
-functional types \citep*{baden_functional_2016}. An example of functional
+functional types \citep{baden_functional_2016}. An example of functional
 diversity in the RGC groups is their preference for local light increase and/or
-decrease. They are respectively refered as ON, OFF and ON-OFF RGC.
+decrease. They are respectively referred as ON, OFF and ON-OFF RGC.
+Furthermore, different species have different sets of RGCs whose parameters are
+influenced by evolution.
 
 Additionally, the retina hosts two families of inhibitory neurons: horizontal
 and
@@ -86,16 +89,16 @@ cover the dimmest light while cones facilitate contrast, color and motion
 discrimination but only in brighter light.
 
 %clear, need proof
-In a high-contrast environment, RGC tends to be more much less sesnsitive than
-in low contrast envrionment \cite{} (???).
-This sensivity adaptation happens on different timescales.
+In a high-contrast environment, RGC tends to be much less sensitive than
+in low contrast environment. %FIND SOURCE
+This sensitivity adaptation happens on different timescales.
 A large change in stimulus contrast wouldn't change the response properties of
 cones and horizontal cells \citep{baccus_fast_2002}. But it would change the
-behaviour of
-bipolar cells, meaning fast adaptation to contrast begin in their sublayer.
-This almost immediate effect of a contrast increment changes the the property
+behavior of
+bipolar cells, meaning fast adaptation to contrast begins in their sublayer.
+This almost immediate effect of a contrast increment changes the properties
 of some bipolar cells, including their temporal patterns as well as their
-selectivity. Their diverse response to this contarst increment
+selectivity. Their diverse response to this contrast increment
 is correlated to the diversity of functional and morphological subtypes among
 bipolar cells.
 Interestingly, This evolution is also seen in all ganglion cells.
@@ -104,12 +107,20 @@ Interestingly, This evolution is also seen in all ganglion cells.
 
 % In the paper, there is an Intersting passage on modeling that could be useful here
 
-Furthermore, contrast adaptation can also
-happen at different spatiel scales, either at the whole scene scale (global
-contrast
-adaptation) or within one ganglion cell receptive field, the part of the visual
-field that the cell receives inputs from (local contrast adaptation)
-\citep{garvert_local_2013}. Local contrast adaptation is especially relevant in
+Furthermore, contrast adaptation happens primarily in a global manner overall
+the receptive field of a ganglion cell.
+Garvert and colleagues stimulated different parts of the receptive field of one
+ganglion cell with either the same light intensities or changing light
+intensities \citep{garvert_local_2013}.
+Surprisingly, when the light level changes in the second area, the response in
+the first area where light did not change was more impacted in comparison.
+Not only does this show that contrast adaptation happens on a scale smaller
+that the receptive field, it also describes this adaptation as being complex to
+apprehend.
+The local nonlinearities in the neuronal pathway leading to the ganglion cell
+response should be responsible for this effect \citep{schreyer_nonlinear_2021}.
+
+Local contrast adaptation is especially relevant in
 understanding how ganglion cells respond to natural images since these stimuli
 are full of spatial details like edges in which two contrast levels appear
 simultaneously. Such images are challenging to use, as they can't be summed up
@@ -118,11 +129,10 @@ to a few statistics easily.
 % Here, I want to cite the global and local adaptation paper and inisist on the stimuli they used
 
 \textbf{Retinal response to natural images.}
-
 Most of the knowledge we have on the retinal response comes from experiments
 using synthetic stimuli that don't reflect the full diversity of natural
 scenes that the mouse retina evolved to respond to. In
-\cite{goldin_context-dependent_2022}, Goldin and colleagues shown that the
+\cite{goldin_context-dependent_2022} showed that the
 aforementioned ON-OFF selectivity of RGC is maintained under natural scene
 stimulation. By recording how RGC respond to natural images perturbed by
 random noise patterns, they were able to measure the local selectivity of RGCs
@@ -136,10 +146,8 @@ of the image, revealing the retina to extract more complex features from the
 retina than previously thought.
 
 \textbf{Standard model of the retina.}
-[CITE THE STUD]
-
-There are two standard functional models of the retina that has been used with
-great success. The simpler model, the Linar-Nonlinear (LN) model, describe a
+Two standard functional models of the retina have been used with
+great success. The simpler model, the Linar-Nonlinear (LN) model, describes a
 functional unit
 of the retina as a combination of a spatio-temporal linear filter and a
 non-linearity (Figure \ref{fig:retina_structure}, Right).
@@ -147,7 +155,6 @@ The Linear-Nonlinear-Linear-Nonlinear (LNLN) model, models a RGC as a cascade
 of LN models representing bipolar cells.
 
 \textbf{Convolutional Neural Networks.}
-
 Due to the large statistical complexity of natural scenes, convolutional neural
 networks have grown to be a new standard for modeling retinal responses to
 natural images. However, compared to baseline models, they tend to be harder to
@@ -160,9 +167,11 @@ dynamics.
 CNNs have also been used to describe the cortex response to natural images
 \citep{cadena_deep_2019}. The amount of available cortex data even led to the
 development of a 'foundation model' of the mouse visual cortex with a
-remarkable capacity to generalize to various stimulus domains \cite{wang}. TO
-ADD
+remarkable capacity to generalize to various stimulus domains
+\citep{wang_towards_2023}.
 
-While CNNs modeling prowess can be measured using traditional metrics such has
+While CNNs modeling prowess can be measured using traditional metrics such as
 their ability to predict the average spiking rate response of a ganglion cell
 to a given image, it's hard to pinpoint what is missing in their predictions.
+
+\clearpage
