@@ -5,3 +5,8 @@
 \contentsline {section}{\numberline {5}Conclusion}{25}{}%
 \contentsline {section}{\numberline {A}Convolutional Neural Network model (CNN)}{30}{}%
 \contentsline {section}{\numberline {B}A toy model of gain control}{34}{}%
+\contentsline {section}{\numberline {C}Enjeux technologiques, sociaux et éthiques}{35}{}%
+\contentsline {section}{\numberline {D}Bilan de compétences}{36}{}%
+\contentsline {subsection}{\numberline {D.1}Compétences Techniques Acquises}{36}{}%
+\contentsline {subsection}{\numberline {D.2}Expériences Clés}{38}{}%
+\contentsline {subsection}{\numberline {D.3}Conclusion}{38}{}%
