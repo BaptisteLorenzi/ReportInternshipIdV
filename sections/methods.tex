@@ -51,14 +51,17 @@ stimulus pair, also referenced as a clip. Each frame is 864x864 pixels (3.5
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{pics/LSTAExplainV3.png}
-    \caption{\textbf{LSTA.}\textit{Adapted from Goldin et al., 2022.} \textbf{a}.
+    \caption{\textbf{LSTA.}\textit{Adapted from Goldin et al., 2022.}
+        \textbf{a}.
         Natural images are
-        perturbed with checkerboards. Scale bar = 500 μm. \textbf{b}. A random sequence
+        perturbed with checkerboards. Scale bar = 500 μm. \textbf{b}. A random
+        sequence
         of
         perturbed natural
         images is being flashed. A gray frame separates all flashes. To compute
         LSTA, we average all different
-        perturbations weighed by the number of spikes they evoked. \textbf{c} An example
+        perturbations weighed by the number of spikes they evoked. \textbf{c}
+        An example
         of
         LSTA for a cell of the
         retina of a mouse. On top, the spatial and temporal receptive field of
@@ -66,7 +69,8 @@ stimulus pair, also referenced as a clip. Each frame is 864x864 pixels (3.5
         cell, as is classically used. On
         the bottom, the LSTA of the cell (right) for different natural images
         (left). A green ellipse fitted on
-        the classical spatial field is shown on the LSTA for reference. \textbf{d} The three different light patterns used for probing adaptation. }
+        the classical spatial field is shown on the LSTA for reference.
+        \textbf{d} The three different light patterns used as adpatation patterns. }
     \label{fig:LSTA}
 \end{figure}
 % Give details about how the images are built for the camera.
@@ -93,7 +97,8 @@ with 1000 repetitions.
 \textbf{Data processing.}
 Multi-electrode array experimental data takes the shape of a collection of
 temporal electrical signals tiling the recorded area.
-In most scenarios, including here, these signals are sorted into different cell
+In most scenarios, including here, these signals are sorted into different
+retinal ganglion cell
 signals using a semi-automatic clustering algorithm. This algorithm is based on
 the shape
 of the electrical spikes as well as their spatial location. It is
@@ -190,7 +195,8 @@ that passed the 'CNN-Train' could be used to fine-tune the CNN model.
     \caption{\textbf{Selecting cells suitable for the different degrees
             of
             analysis.} \textbf{Middle.} Flow chart of the cell selection. In
-        green, we painted the amount of cells that successively passed each test.
+        green, we painted the amount of cells that successively passed each
+        test.
         \textbf{Outer.} Examples of good and
         bad cells
         for each test. On each raster plot, a vertical bar represents the
@@ -268,7 +274,7 @@ search strategy, using a pipeline recently developed within the laboratory.
 % ADD REFERENCE
 
 All the code was written in Python and is mainly built around the Pytorch
-library \citep{pytorch}.
+library \citep{paszke_pytorch_2019}.
 We thought the explanations of those concepts were out of the scope of the main
 text of this report. A more accurate and mathematical description of the model,
 the regularizations and the optimization strategy can be found in the Appendix
@@ -326,8 +332,10 @@ prediction following the following steps:
     \item We defined the ground truth as the average firing rate over all
           repetitions of the same stimulus.
     \item We standardized both the ground truth and the prediction by
-          subtracting the mean and dividing by the standard deviation of each group
-          respectively. This is to take into account that the output of the model is not
+          subtracting the mean and dividing by the standard deviation of each
+          group
+          respectively. This is to take into account that the output of the
+          model is not
           necessarily on the same scale as the ground truth.
     \item We computed the Pearson correlation between the two vectors.
 \end{enumerate}
